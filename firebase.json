@@ -1,9 +1,6 @@
 {
-  "database": {
-    "rules": "database.rules.json"
-  },
   "hosting": {
-    "public": "public",
+    "public": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,10 +9,15 @@
   },
   "emulators": {
     "hosting": {
-      "port": 5000
+      "port": 5001
+    },
+    "database": {
+      "port": 3333
     },
     "ui": {
       "enabled": true
     }
   }
 }
+
+

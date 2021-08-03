@@ -16,12 +16,14 @@
 
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
-    <script src="~bulma-carousel/dist/js/bulma-carousel.min.js"></script>
-    <link
+    <script defer src="/__/firebase/8.3.1/firebase.js"></script>
+   <!-- include only the Firebase features as you need -->
+   <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+   <script defer src="/__/firebase/8.8.0/firebase-auth.js"></script>    <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
     />
-    <script src="js/index.js" defer></script>
   </head>
   <body>
     <!--Navbar -->
@@ -75,5 +77,6 @@
         </div>
       </div>
     </section>
+    <script src="js/signIn.js"></script>
   </body>
 </html>
