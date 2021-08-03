@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+:root {
+  --color-bg: #69F7BE;
+  --color-text-main: #000000;
+  --color-primary: #FFFF00;
+  --wrapper-height: 87vh;
+  --image-max-width: 300px;
+  --image-margin: 3rem;
+  --font-family: "Open Sans";
+  --font-family-header: "Open Sans";
+}
+
+
+.abcRioButtonBlue .abcRioButtonContentWrapper {
+    border: 1px solid transparent;
+}
+
+.abcRioButtonContentWrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.hero {
+  background-image: url("https://cdn.glitch.com/360f3dcc-2cc5-46dc-b481-5ced1f576c43%2Fmarginalia-519.png?v=1627947130156") !important;
+  background-position: center; /* Center the image*/
+}
+  
