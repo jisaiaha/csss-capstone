@@ -174,7 +174,7 @@
               <div class="field">
                 <label class="label">Workout Title</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Text input" />
+                  <input class="input" type="text" placeholder="Text input" id="workout-title-input"/>
                 </div>
               </div>
               <!--Create a workout card -->
@@ -189,6 +189,7 @@
                           class="input"
                           type="text"
                           placeholder="Name of exercise"
+                          id="name-input"
                         />
                       </div>
                     </div>
@@ -203,6 +204,7 @@
                               class="input"
                               type="number"
                               placeholder="# of repetitions"
+                              id="reps-input"
                             />
                           </div>
                         </div>
@@ -216,6 +218,7 @@
                               class="input"
                               type="number"
                               placeholder="# of sets"
+                              id="sets-input"
                             />
                           </div>
                           <!-- Weight -->
@@ -226,6 +229,7 @@
                               class="input"
                               type="number"
                               placeholder="lbs"
+                               id="weight-input"
                             />
                           </div>
                         </div>
@@ -264,6 +268,9 @@
                           <p class="subtitle is-6" id="workout-#-sets">
                             0 sets
                           </p>
+                          <p class="subtitle is-6" id="workout-#-weight">
+                            0 lbs
+                          </p>
                         </div>
                         <div class="column">
                           <button class="button is-danger" id="workout-#-sets">
@@ -278,7 +285,7 @@
               </div>
             </section>
             <footer class="modal-card-foot">
-              <button class="button is-success">Save changes</button>
+              <button class="button is-success" id="save-workout">Save changes</button>
               <button class="button" id="close-modal0">Cancel</button>
             </footer>
           </div>
