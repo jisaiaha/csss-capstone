@@ -1,3 +1,5 @@
+//Have you visited the landing page before? Check using cookie
+
 const signIn = () => {
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth()
@@ -9,7 +11,14 @@ const signIn = () => {
 
     // The signed-in user info.
     var user = result.user;
-    window.location = 'info.html';
+    
+    //Sign-In sending location
+    if(!document.cookie.includes('landingPage')) {
+    window.location.href = 'info.html';
+  } else {
+    window.location.href = 'home.html'; 
+  }
+    
   }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
