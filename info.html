@@ -32,7 +32,7 @@
    <script defer src="/__/firebase/8.8.0/firebase-auth.js"></script>
 <script defer src="js/info.js"></script>
   </head>
-  <body>
+  <body onload="checkCookie()">
     <div class="columns">
       <div class="column" id="column-left">
         <div class="bd-categories">
@@ -230,6 +230,6 @@
         </div>
       </div>
     </div>
-    <script> document.cookie = "landingPage=visited; expires=Fri, 31 Dec 9999 23:59:59 GMT"; </script>
+    <script src="js/signIn.js"></script>
   </body>
 </html>
