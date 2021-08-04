@@ -74,15 +74,14 @@
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        src="https://img-premium.flaticon.com/png/512/3664/premium/3664387.png?token=exp=1628120931~hmac=cc3743ae1cfb6930c740f7a1329b02c6"
                         alt="Placeholder image"
                       />
                     </figure>
                   </div>
                   <div class="card-content">
                     <div class="content">
-                      <p class="subtitle is-5">Create a new workout</p>
-                      <p class="subtitle is-5"></p>
+                      <button class="button is-light is-large" id="open-modal">Create a new workout</button>
                     </div>
                   </div>
                 </div>
@@ -158,12 +157,16 @@
           </div>
         </div>
         <!--Modal Template -->
-        <div class="modal is-active">
+        <div class="modal is-active" id="modal">
           <div class="modal-background"></div>
           <div class="modal-card">
             <header class="modal-card-head">
               <p class="modal-card-title">Add a new workout</p>
-              <button class="delete" aria-label="close" id="close-modal0"></button>
+              <button
+                class="delete"
+                aria-label="close"
+                id="close-modal1"
+              ></button>
             </header>
             <section class="modal-card-body">
               <!-- Content ... -->
@@ -217,8 +220,8 @@
                           </div>
                         </div>
                         <button class="button is-info" id="workout-#-submit">
-                            Submit
-                          </button>
+                          Submit
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -270,10 +273,29 @@
           </div>
         </div>
       </div>
-      JS for hiding and showing modal
+<!--JS for hiding and showing modal -->
       <script>
-        const hide = document.getElementById("close-modal0");
+        
+        const hide0 = document.getElementById("close-modal0");
         const hide1 = document.getElementById("close-modal1");
+        const openmodal = document.getElementById("open-modal");
+        const modal = document.getElementById("modal");
+        
+        hide0.addEventListener("click", e => {
+          deleteModal();
+        });
+        hide1.addEventListener("click", e => {
+          deleteModal();
+        });
+        openmodal.addEventListener("click", e => {
+          showModal();
+        });
+        const deleteModal = () => {
+          modal.classList.remove("is-active");
+        }
+        const showModal = () => {
+          modal.classList.add("is-active");
+        }
       </script>
 
       <!--       <div class="column is-one-fifth" id="column-right">
