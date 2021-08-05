@@ -298,7 +298,6 @@
       <script>
         const hide0 = document.getElementById("close-modal0");
         const hide1 = document.getElementById("close-modal1");
-        const hide2 = document.getElementById("close-modal2");
         const openmodal = document.getElementById("open-modal");
         const modal = document.getElementById("modal");
         const modalview = document.getElementById("modal-view");
@@ -307,9 +306,6 @@
         });
         hide1.addEventListener("click", e => {
           deleteModal(modal);
-        });
-        hide2.addEventListener("click", e => {
-          deleteModal(modalview);
         });
         openmodal.addEventListener("click", e => {
           showModal(modal);
