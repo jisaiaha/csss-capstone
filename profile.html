@@ -22,6 +22,11 @@
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="css/home.css" />
     <script src="js/signIn.js" defer></script>
+    <script defer src="/__/firebase/8.3.1/firebase.js"></script>
+   <!-- include only the Firebase features as you need -->
+   <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+   <script defer src="/__/firebase/8.8.0/firebase-auth.js"></script>
   </head>
   <body>
     <div class="columns">
@@ -284,6 +289,7 @@
       <!--       <div class="column is-one-fifth" id="column-right">
       </div> -->
     </div>
-    <script src="js/profile.js"></script>
+    <script defer src="js/profile.js"></script>
+    <script defer src="js/workoutSubmit.js"></script>
   </body>
 </html>

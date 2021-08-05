@@ -4,38 +4,49 @@ const repsInput = document.querySelector("#sets-input");
 const weightInput = document.querySelector("#weight-input");
 const userWorkouts = document.querySelector("#user-workouts");
 const addButton = document.querySelector("#addButton");
+const submitButton = document.querySelector('#save-workout');
+let liftContents = "";
+let liftNumber = 0;
 liftArray = new Array();
+
+if(submitButton){
+    submitButton.onclick = function(){
+        handleWorkoutSubmit(liftArray);
+        liftContents = "";
+        userWorkouts.innerHTML = liftContents;
+    }   
+}
 
 if(addButton){
     addButton.onclick = function() {
-        console.log("Add button clicked")
-        const curLift = new Array(
-            nameInput.value,
-            setsInput.value,
-            repsInput.value,
-            weightInput.value
-        );
-        if(
-            curLift[0] != "" &&
-            curLift[1] != "" &&
-            curLift[2] != "" &&
-            curLift[3] != "" 
-        ){
-            liftArray.push(curLift);
-            handleLiftSubmit(curLift);
-            nameInput.value = "";
-            setsInput.value = "";
-            repsInput.value = "";
-            weightInput.value = "";
-        }else{
-            alert("There are missing values. Please check your lift data and try again!")
-        }
+        pullInputValues()
     };
 }
-	
 
-let liftContents = "";
-let liftNumber = 0;
+const pullInputValues = () => {
+    const curLift = new Array(
+        nameInput.value,
+        setsInput.value,
+        repsInput.value,
+        weightInput.value
+    );
+    if(
+        curLift[0] != "" &&
+        curLift[1] != "" &&
+        curLift[2] != "" &&
+        curLift[3] != "" 
+    ){
+        liftArray.push(curLift);
+        handleLiftSubmit(curLift);
+        nameInput.value = "";
+        setsInput.value = "";
+        repsInput.value = "";
+        weightInput.value = "";
+        console.log(liftArray);
+    }else{
+        alert("There are missing values. Please check your lift data and try again!")
+    }
+}
 
 const handleLiftSubmit = (curLift) => {
 	liftContents += `
