@@ -1,4 +1,5 @@
 let googleUserId;
+let workoutArray = [];
 
 window.onload = (event) => {
   // Use this to retain user state between html pages.
@@ -6,7 +7,8 @@ window.onload = (event) => {
     if (user) {
       console.log('Logged in as: ' + user.displayName);
       googleUserId = user.uid;
-      getAllWorkouts(googleUserId);
+      getAllWorkouts();
+      renderWorkouts();
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html'; 
@@ -14,7 +16,19 @@ window.onload = (event) => {
   });
 };
 
-let workoutArray = [];
+const renderWorkouts = () => {
+    const cards = '';
+    workoutArray.forEach(workout => {
+        cards += createCard(workout);
+    });
+    document.querySelector('#posts').innerHTML = cards;
+}
+
+const createCard = (workout) => {
+    const cardHTML = `
+    
+    `;
+}
 
 const getAllWorkouts = () => {
     const dataRef = firebase.database().ref(`workouts/users`);
