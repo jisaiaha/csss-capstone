@@ -94,11 +94,39 @@
                 </div>
                 <div id="panel-1"></div>
               </div>
-              <div class="column" id="panel-2"></div>
+              <div class="column" id="panel-2">
+                <!-- view workouts Card template -->
+                <div class="card">
+                 <div class="card-image">
+                   <figure class="image is-4by3">
+                     <img
+                       src=""
+                       alt="workout image"
+                     />
+                   </figure>
+                 </div>
+                 <div class="card-content">
+                   <div class="content">
+                     <div class="columns">
+                        <div class="column">
+                        <p class="subtitle is-5">${lift.title}</p>
+                     <p class="subtitle is-5">${lift.date}</p>
+                     </div>
+                       <div class="column">
+                         <button class="button is-light is-large" id="" onclick="">View workout</button>
+                         <button class="button is-danger is-large" id="" onclick="">Delete workout</button>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 <!--  -->
+               </div>
+
+              </div>
               <div class="column" id="panel-3"></div>
             </div>
           </div>
-            <!--       alert modal -->
+      <!--alert modal -->
       <div class="modal" id="alert-modal">
         <div class="modal-background"></div>
         <div class="modal-card">
@@ -117,15 +145,37 @@
           </footer>
         </div>
       </div>
-          <!--View workout Modal -->
+          <!--View workout Modal --> 
           <div class="modal" id="modal-view">
             <div class="modal-background"></div>
             <div class="modal-card">
               <header class="modal-card-head">
                 <p class="modal-card-title">Modal title</p>
               </header>
-              <section class="modal-card-body" id="view-app">
-               
+              <section class="modal-card-body" id="lift-panel">
+                  <!-- card template JS view lifts -->
+               <div class="card">
+                  <div class="card-content">
+                    <div class="content">
+                      <div class="columns">
+                        <div class="column">
+                          <p class="title is-4">${lift.name}</p>
+                        </div>
+                        <div class="column">
+                          <p class="subtitle is-6">
+                            ${lift.reps}
+                          </p>
+                          <p class="subtitle is-6">
+                            ${lift.sets}
+                          </p>
+                          <p class="subtitle is-6">
+                            ${lift.weight}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </section>
               <footer class="modal-card-foot">
                 <button class="button" id="close-modal2">Cancel</button>
@@ -163,7 +213,7 @@
             </div>
           </div>
         </div>
-        <!--Modal Template -->
+        <!--Modal Template Create workout -->
         <div class="modal" id="modal">
           <div class="modal-background"></div>
           <div class="modal-card">
@@ -296,5 +346,8 @@
     </div>
     <script defer src="js/profile.js"></script>
     <script defer src="js/workoutSubmit.js"></script>
+
+    <!-- <script src="js/workoutsUI.js" defer></script> -->
+
   </body>
 </html>
