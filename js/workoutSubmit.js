@@ -16,19 +16,24 @@ window.onload = (event) => {
 
 const handleWorkoutSubmit = (liftArray) => {
 	// 1. Capture the form data
-	const workoutId = firebase.database.ref(`workouts/users/${googleUser.uid}`).push;
-	const workoutTitle = document.querySelector('#workoutTitle');
-	const workoutDate = dateCreated.toDate().toDateString();
+    let workoutId;
+    const workoutTitle = document.querySelector('#workout-title-input');
+    const currentDate = new Date();
+    const currentDayOfMonth = currentDate.getDate();
+    const currentMonth = currentDate.getMonth(); 
+    const currentYear = currentDate.getFullYear();
+    const workoutDate = (currentMonth + 1) + "/" + currentDayOfMonth + "/" + currentYear;
 
-	// 2. Format the data and write it to our database
-	const workoutInfo = {
-		id: workoutId,
-		title: workoutTitle.value,
-		date: workoutDate
-	}
-	workoutId.push(workoutInfo);
+    // 2. Format the data and write it to our database
+    let workoutRef = firebase.database().ref(`workouts/users/${googleUser.uid}`);
+    workoutRef.push({
+        'title': workoutTitle.value,
+		'date': workoutDate
+    })
+    .then(res =>{
+        workoutId = res.getKey()
 
-	// 3. Handle the array of lifts
+        // 3. Handle the array of lifts
 	let liftName;
 	let liftWeight;
 	let liftReps;
@@ -45,11 +50,15 @@ const handleWorkoutSubmit = (liftArray) => {
 		liftReps = lift[2];
 		liftWeight = lift[3];
         
-        firebase.database().ref(`workouts/users/${googleUser.uid}/${workoutId}`).push({
+        firebase.database().ref(`workouts/users/${googleUser.uid}/${workoutId}/lifts`).push({
             name: liftName,
 			sets: liftSets,
             reps: liftReps,
             weight: liftWeight
         })
 	});
+    })
+    .catch(error => console.log(error));
+
+	
 }

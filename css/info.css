@@ -31,7 +31,7 @@
 .vertical-center-nav {
   margin-top: 30vh;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   #column-left {
     visibility: hidden;
     clear: both;
@@ -51,4 +51,19 @@
 
 #column-middle{
   padding: 8vh;
+}
+.workouts-bg2 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    13deg,
+    rgba(0, 0, 0, 1) 14%,
+    rgba(45, 253, 107, 1) 100%
+  );
+}
+.hidden {
+  visibility: hidden;
+}
+.music-margins {
+  margin-left: 2vw;
+  margin-right: 2vw;
 }

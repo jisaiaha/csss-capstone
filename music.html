@@ -20,8 +20,9 @@
     />
 
     <!-- Import the webpage's stylesheet -->
-    <link rel="stylesheet" href="css/home.css"/>
+    <link rel="stylesheet" href="css/info.css" />
     <script src="js/signIn.js" defer></script>
+    <script src="js/spotifyAPI.js" defer></script>
   </head>
   <body>
     <div class="columns">
@@ -40,25 +41,131 @@
           </a>
           <ul class="menu-list vertical-center-nav has-text-centered">
             <li><a href="home.html">Home</a></li>
-            <li><a href="music.html"class="is-active">Music</a></li>
+            <li><a href="music.html" class="is-active">Music</a></li>
             <li><a href="profile.html">You</a></li>
             <li><a href="friends.html">Friends</a></li>
           </ul>
         </aside>
       </div>
 
-      <div class="column" id="column-main">
+      <div class="column workouts-bg2" id="column-main">
         <section class="hero">
           <div class="hero-body">
             <p class="title">
               Music
             </p>
           </div>
+          <button
+            class="button is-black is-large music-margins"
+            onclick="getOAuth()"
+          >
+            Authorize with Spotify
+          </button>
         </section>
+        <!--Card -->
+        <div class="card music-margins">
+          <div class="card-content">
+            <div class="content">
+              <div class="columns">
+                <div class="column">
+                  <!--Choose a genre or search-->
+
+                  <div class="field">
+                    <label class="label"
+                      >Pick a genre</label
+                    >
+                    <div class="control">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="playlist/song genre"
+                        id="userQuery"
+                      />
+                    </div>
+                  </div>
+                  <!--                   Buttons to submit search -->
+                  <button
+                    class="button is-success is-large"
+                    id="createPlaylist"
+                  >
+                    Generate Playlist
+                  </button>
+                  <button
+                    class="button is-success is-large my-2"
+                    onclick=""
+                    id="createSong"
+                  >
+                    Generate Song
+                  </button>
+                </div>
+                <!--SPOTIFY EMBED -->
+                <div class="column">
+                  <iframe
+                    src=""
+                    width="500"
+                    height="500"
+                    frameborder="0"
+                    allowtransparency="true"
+                    allow="encrypted-media"
+                    id="spotify-embed"
+                  ></iframe>
+                </div>
+                <!--Choose Genre -->
+                <div class="column">
+                  <!--Tempo feature-->
+                  <p class="title is-4">Tempo</p>
+                  <progress
+                    class="progress is-success"
+                    value="0"
+                    max="240"
+                    id="tempo-UI"
+                    >60%</progress
+                  >
+                  <p class="subtitle is-4" id="tempo-val"></p>
+                  <p class="subtitle is-6">
+                    For reference, 120 BPM is around a 3 mph running pace.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-<!--       <div class="column is-one-fifth" id="column-right">
+      <!--       <div class="column is-one-fifth" id="column-right">
       </div> -->
     </div>
+    <!--UI only JS -->
+    <script>
+      const dropdownbtn = document.getElementById("toggle-dropdown");
+      const dropdown = document.getElementById("dropdown");
+      const userQ = document.getElementById("userQuery");
+      const buttons = ["createPlaylist", "createSong"];
+
+      const UIController = (ids, numItems) => {
+        objElements = {};
+        for (let i = 0; i <= numItems; i++) {
+          objElements[i] = document.getElementById(ids[i]);
+        }
+        return objElements;
+      };
+      let query = "workout";
+
+      let btnsDOM = UIController(buttons, buttons.length);
+      btnsDOM[0].addEventListener("click", e => {
+        if (userQ != "") {
+          query = userQ.value;
+          userQ.value = "";
+        }
+        searchAPI(query, "playlist");
+      });
+      btnsDOM[1].addEventListener("click", e => {
+        if (userQ != "") {
+          query = userQ.value;
+          userQ.value = "";
+        }
+        searchAPI(query, "track");
+      });
+    </script>
   </body>
 </html>
