@@ -1,7 +1,5 @@
-//Have you visited the landing page before? Check using cookie
-
 const signIn = () => {
-  var provider = new firebase.auth.GoogleAuthProvider();
+    var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth()
   .signInWithPopup(provider)
   .then((result) => {
@@ -11,12 +9,13 @@ const signIn = () => {
 
     // The signed-in user info.
     var user = result.user;
-    window.location = 'info.html'; 
+    //window.location = 'info.html'; 
     //Sign-In sending location
-    if(!document.cookie.includes('landingPage')) {
-        window.location.href = "info.html";
+    if(document.cookie.includes('landingPage')) {
+        window.location.href = "home.html";
+        console.log(document.cookie)
    } else {
-        window.location.href = 'home.html'; 
+        window.location.href = 'info.html'; 
    }
     
   }).catch((error) => {
@@ -34,5 +33,16 @@ const signIn = () => {
       credential
     };
     console.log(err);
+  });
+}
+
+const LogOut = () => {
+  firebase.auth()
+  .signOut()
+  .then(() => {
+    window.location.href = "index.html"
+    console.log("Logged Out")
+  }).catch((error) => {
+    // An error happened.
   });
 }
