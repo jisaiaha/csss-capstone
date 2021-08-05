@@ -22,12 +22,11 @@
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="css/info.css" />
     <script src="js/signIn.js" defer></script>
-     <script defer src="/__/firebase/8.3.1/firebase.js"></script>
-   <!-- include only the Firebase features as you need -->
-   <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
-   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-   <script defer src="/__/firebase/8.8.0/firebase-auth.js"></script>
-    
+    <script defer src="/__/firebase/8.3.1/firebase.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script defer src="/__/firebase/8.8.0/firebase-auth.js"></script>
   </head>
   <body>
     <div class="columns">
@@ -69,7 +68,7 @@
               My workouts
             </h3>
             <div class="columns">
-              <div class="column">
+              <div class="column" id="panel-1">
                 <div class="card">
                   <div class="card-image">
                     <figure class="image is-4by3">
@@ -87,75 +86,79 @@
                     </div>
                   </div>
                 </div>
-                <div id="panel-1"></div>
               </div>
               <div class="column" id="panel-2">
                 <!-- view workouts Card template -->
                 <div class="card">
-                 <div class="card-content">
-                     <p class="title is-3">${workout.title}</p>
-                     <!-- Lifts card template -->
-               <div class="card">
                   <div class="card-content">
-                    
+                    <p class="title is-3">${workout.title}</p>
+                    <!-- Lifts card template -->
+                    <div class="card">
+                      <div class="card-content">
+                        <div class="content">
+                          <div class="columns">
+                            <div class="column">
+                              <p class="title is-4">${lift.name}</p>
+                            </div>
+                            <div class="column">
+                              <p class="subtitle is-6">
+                                ${lift.reps}
+                              </p>
+                              <p class="subtitle is-6">
+                                ${lift.sets}
+                              </p>
+                              <p class="subtitle is-6">
+                                ${lift.weight}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="content">
-                   
                       <div class="columns">
                         <div class="column">
-                          <p class="title is-4">${lift.name}</p>
+                          <p class="subtitle is-5">${workout.date}</p>
                         </div>
                         <div class="column">
-                          <p class="subtitle is-6">
-                            ${lift.reps}
-                          </p>
-                          <p class="subtitle is-6">
-                            ${lift.sets}
-                          </p>
-                          <p class="subtitle is-6">
-                            ${lift.weight}
-                          </p>
+                          <button
+                            class="button is-danger is-large"
+                            id=""
+                            onclick=""
+                          >
+                            Delete workout
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <!--  -->
                 </div>
-                   <div class="content">
-                     <div class="columns">
-                        <div class="column">
-                     <p class="subtitle is-5">${workout.date}</p>
-                     </div>
-                       <div class="column">
-                         <button class="button is-danger is-large" id="" onclick="">Delete workout</button>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                 <!--  -->
-               </div>
-
               </div>
               <div class="column" id="panel-3"></div>
             </div>
           </div>
-      <!--alert modal -->
-      <div class="modal" id="alert-modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Delete for all eternity?</p>
-          </header>
-          <section class="modal-card-body">
-            <p>
-              Are you sure you want to delete this?
-            </p>
-            <div id="note-preview"></div>
-          </section>
-          <footer class="modal-card-foot">
-            <button class="button is-danger" id="alert-confirm">Delete</button>
-            <button class="button" id="alert-cancel">Cancel</button>
-          </footer>
-        </div>
-      </div>
+          <!--alert modal -->
+          <div class="modal" id="alert-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title">Delete for all eternity?</p>
+              </header>
+              <section class="modal-card-body">
+                <p>
+                  Are you sure you want to delete this?
+                </p>
+                <div id="note-preview"></div>
+              </section>
+              <footer class="modal-card-foot">
+                <button class="button is-danger" id="alert-confirm">
+                  Delete
+                </button>
+                <button class="button" id="alert-cancel">Cancel</button>
+              </footer>
+            </div>
+          </div>
           <!--  -->
           <!--Stats panel -->
           <div id="stats-panel">
@@ -187,7 +190,7 @@
             </div>
           </div>
         </div>
-        <!--Modal Template Create workout -->
+        <!--Modal Create workout -->
         <div class="modal" id="modal">
           <div class="modal-background"></div>
           <div class="modal-card">
@@ -205,7 +208,12 @@
               <div class="field">
                 <label class="label">Workout Title</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Text input" id="workout-title-input"/>
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Text input"
+                    id="workout-title-input"
+                  />
                 </div>
               </div>
               <!--Create a workout card -->
@@ -254,16 +262,16 @@
                           </div>
                           <!-- Weight -->
                           <div class="field">
-                          <label class="label">Weight</label>
-                          <div class="control">
-                            <input
-                              class="input"
-                              type="number"
-                              placeholder="lbs"
-                               id="weight-input"
-                            />
+                            <label class="label">Weight</label>
+                            <div class="control">
+                              <input
+                                class="input"
+                                type="number"
+                                placeholder="lbs"
+                                id="weight-input"
+                              />
+                            </div>
                           </div>
-                        </div>
                         </div>
                         <button class="button is-info" id="addButton">
                           Add
@@ -281,20 +289,15 @@
               </div>
             </section>
             <footer class="modal-card-foot">
-              <button class="button is-success" id="save-workout">Save changes</button>
+              <button class="button is-success" id="save-workout">
+                Save changes
+              </button>
               <button class="button" id="close-modal0">Cancel</button>
             </footer>
           </div>
         </div>
       </div>
-<!--JS for hiding and showing modal -->
-
-
-      <!--       <div class="column is-one-fifth" id="column-right">
-      </div> -->
-    </div>
-    <script defer src="js/profile.js"></script>
-    <script defer src="js/workoutSubmit.js"></script>
+      <!--JS for hiding and showing modal -->
       <script>
         const hide0 = document.getElementById("close-modal0");
         const hide1 = document.getElementById("close-modal1");
@@ -310,14 +313,18 @@
         openmodal.addEventListener("click", e => {
           showModal(modal);
         });
-        const deleteModal = (element) => {
+        const deleteModal = element => {
           element.classList.remove("is-active");
         };
-        const showModal = (element) => {
+        const showModal = element => {
           element.classList.add("is-active");
         };
       </script>
-    <!-- <script src="js/workoutsUI.js" defer></script> -->
 
+      <!--       <div class="column is-one-fifth" id="column-right">
+      </div> -->
+    </div>
+    <script defer src="js/profile.js"></script>
+    <script defer src="js/workoutSubmit.js"></script>
   </body>
 </html>
