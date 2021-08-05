@@ -22,7 +22,7 @@
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="css/home.css" />
     <script src="js/signIn.js" defer></script>
-    <script defer src="/__/firebase/8.3.1/firebase.js"></script>
+     <script defer src="/__/firebase/8.3.1/firebase.js"></script>
    <!-- include only the Firebase features as you need -->
    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
@@ -52,10 +52,10 @@
         </aside>
       </div>
 
-      <div class="column workouts-bg" id="column-main">
+      <div class="column" id="column-main">
         <section class="hero">
           <div class="hero-body">
-            <p class="title">
+            <p class="title" id="username-profile">
               Username
             </p>
             <figure class="image is-128x128">
@@ -71,11 +71,10 @@
           <div id="workouts-panel">
             <h3 class="title is-3">
               My workouts
-              <button class="button is-light">View all</button>
             </h3>
             <div class="columns">
               <div class="column">
-                <div class="card" id="panel-1-1">
+                <div class="card">
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img
@@ -86,55 +85,38 @@
                   </div>
                   <div class="card-content">
                     <div class="content">
-                      <button class="button is-light is-large" id="open-modal">Create a new workout</button>
+                      <button class="button is-light is-large" id="open-modal">
+                        Create a new workout
+                      </button>
                     </div>
                   </div>
                 </div>
+                <div id="panel-1"></div>
               </div>
-              <div class="column" id="panel-1-2">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="subtitle is-5">Title:</p>
-                      <p class="subtitle is-5">Created:</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="column" id="panel-1-3">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="subtitle is-5">Title:</p>
-                      <p class="subtitle is-5">Created:</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div class="column" id="panel-2"></div>
+              <div class="column" id="panel-3"></div>
             </div>
           </div>
+          <!--View workout Modal -->
+          <div class="modal" id="modal-view">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title">Modal title</p>
+              </header>
+              <section class="modal-card-body" id="view-app">
+               
+              </section>
+              <footer class="modal-card-foot">
+                <button class="button" id="close-modal2">Cancel</button>
+              </footer>
+            </div>
+          </div>
+          <!--  -->
           <!--Stats panel -->
           <div id="stats-panel">
             <h3 class="title is-3">
               My Stats
-              <button class="button is-light"></button>
             </h3>
             <div class="columns">
               <div class="column">
@@ -263,27 +245,30 @@
       </div>
 <!--JS for hiding and showing modal -->
       <script>
-        
         const hide0 = document.getElementById("close-modal0");
         const hide1 = document.getElementById("close-modal1");
+        const hide2 = document.getElementById("close-modal2");
         const openmodal = document.getElementById("open-modal");
         const modal = document.getElementById("modal");
-        
+        const modalview = document.getElementById("modal-view");
         hide0.addEventListener("click", e => {
-          deleteModal();
+          deleteModal(modal);
         });
         hide1.addEventListener("click", e => {
-          deleteModal();
+          deleteModal(modal);
+        });
+        hide2.addEventListener("click", e => {
+          deleteModal(modalview);
         });
         openmodal.addEventListener("click", e => {
-          showModal();
+          showModal(modal);
         });
-        const deleteModal = () => {
-          modal.classList.remove("is-active");
-        }
-        const showModal = () => {
-          modal.classList.add("is-active");
-        }
+        const deleteModal = (element) => {
+          element.classList.remove("is-active");
+        };
+        const showModal = (element) => {
+          element.classList.add("is-active");
+        };
       </script>
 
       <!--       <div class="column is-one-fifth" id="column-right">
