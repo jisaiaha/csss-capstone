@@ -27,6 +27,10 @@
       href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
     />
     <script src="js/signIn.js" defer></script>
+    <script> 
+    document.cookie = "landingPage=visited; expires=Fri, 31 Dec 9999 23:59:59 GMT"; 
+    console.log(document.cookie); 
+    </script>
   </head>
   <body>
     <div class="columns">
@@ -169,7 +173,6 @@
         
         const openmodal = document.getElementById("open-modals");
         const modals = document.getElementById("modals");
-        console.log(modals)
         const modalview = document.getElementById("modal-view");
         
         hidden0.addEventListener("click", e => {
