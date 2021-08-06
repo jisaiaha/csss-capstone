@@ -36,7 +36,7 @@ const renderDataAsHtml = data => {
    cards += createCard(workout, workoutItem);
  }
  
-document.querySelector("#posts").innerHTML = cards;
+document.querySelector("#app").innerHTML = cards;
 };
  
 const deleteWorkout = workoutId => {
