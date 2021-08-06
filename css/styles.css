@@ -21,8 +21,65 @@
     width: 100%;
 }
 
-.hero {
-  background-image: url("https://cdn.glitch.com/360f3dcc-2cc5-46dc-b481-5ced1f576c43%2Furban-913.png") !important;
-  background-position: center; /* Center the image*/
+
+
+#column-left {
+  position: sticky;
+  max-height:100vh;
+  height: 100vh;
+  overflow-y: auto;
+  top: 0;
+  bottom: 0; 
+  background-color: #c2c2c2;
+}
+#column-right{
+  background-color: #c2c2c2;
+  margin-right: 0vh;
+  padding: 4vh 4vh;
+}
+#posts {
+  justify-content: center !important;
+  margin-left: 10vh;
+  margin-right: 10vh;
+
+}
+.vertical-center-nav {
+  margin-top: 30vh;
+}
+@media screen and (max-width: 800px) {
+  #column-left {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px 0px 5px 20px;
+    width: 28%;
+    display: none;
+  }
+  #column-right {
+    width: 100%;
+  }
+}
+
+.bd-categories{
+  padding: 1rem;
+}
+
+#column-middle{
+  padding: 8vh;
+}
+.workouts-bg2 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    13deg,
+    rgba(0, 0, 0, 1) 14%,
+    rgba(45, 253, 107, 1) 100%
+  );
+}
+.hidden {
+  visibility: hidden;
+}
+.music-margins {
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
   

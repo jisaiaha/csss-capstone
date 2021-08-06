@@ -34,31 +34,35 @@
   </head>
   <body>
     <div class="columns">
-      <div class="column is-one-fifth" id="column-left">
-        <aside class="menu">
-          <a class="navbar-item">
-            <img
-              src="https://image.flaticon.com/icons/png/512/38/38464.png"
-              alt="icon"
-              width="28"
-              height="28"
-            />
-            <p class="ml-4 has-text-weight-semibold is-size-5">
-              My Workout App
-            </p>
-          </a>
-          <ul class="menu-list vertical-center-nav has-text-centered">
-            <li><a href="home.html">Home</a></li> <!-- class="is-active" -->
-            <li><a href="music.html">Music</a></li>
-            <li><a href="profile.html">You</a></li>
-            <li><a href="friends.html">Friends</a></li>
+      <div class="column" id="column-left">
+        <div class="bd-categories">
+          <aside class="menu">
+            <a class="navbar-item">
+              <img
+                src="https://image.flaticon.com/icons/png/512/38/38464.png"
+                alt="icon"
+                width="28"
+                height="28"
+              />
+              <p class="ml-4 has-text-weight-semibold is-size-5">
+                My Workout App
+              </p>
+            </a>
+          
+            <ul class="menu-list vertical-center-nav has-text-centered">
+              <li><a class="is-active" href="home.html" >Home</a></li>
+              <li><a href="music.html">Music</a></li>
+              <li><a href="profile.html">You</a></li>
+                <li><a href="info.html">Info</a></li>
             <li><a href="index.html">Sign Out</a></li>
-          </ul>
-        </aside>
+              <hr>
+            </ul>
+          </div>
+          </aside>
       </div>
       
 <!-- new modal starts here -->
-      <div class="column" id="column-middle">
+      <div class="column is-three-fifths" id="column-middle">
         <section class="hero">
           <div class="hero-body">
             <p class="title">
@@ -195,73 +199,23 @@
                 }
               </script>
               
-<!-- code cut here -->
-<!--       <div class="column" id="column-middle">
-        <section class="hero">
-          <div class="hero-body">
-            <p class="title">
-              Home
-            </p>
-            <a class="button is-white is-medium is-rounded" onclick="submitMessage()">
-              <strong class="is-primary">Add Post</strong>
-            </a>
-          </div>
-        </section>
-        <div id="posts"> -->
-          
-    
-          <!--INSERT POSTS HERE -->
-          <!-- the actual card and contents for user -->
-<!--           <div class="card my-5">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    <img
-                      src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vdGJhbGwlMjBwbGF5ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
-                      alt="Placeholder image"
-                    />
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <p class="title is-4">Sara Brown</p>
-                  <p class="subtitle is-6">@sara_brown</p>
-                </div>
-              </div>
 
-              <div class="content">
-                <div class="card-image" style="padding: 0;">
-                  <figure class="image">
-                    <img
-                      src="https://www.keckmedicine.org/wp-content/uploads/2019/09/Teenage-girl-playing-soccer-1.jpg"
-                      alt="Placeholder image"
-                    />
-                  </figure>
-                </div>
-                Training for my next soccer game! <a href="#">#soccer</a><a href="#">#practicemakesperfect</a>
-                <br />
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-              </div>
-            </div>
-          </div> -->
-<!--         </div>
-      </div> -->
-      
 <!-- right column username stuff -->
-      <div class="column is-one-fifth" id="column-right">
+      <div class="column is-one-quarter" id="column-right">
         <div class="card my-5">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
                 <figure class="image is-60x60">
                   <img
+                  id="profile-pic"
                     src="https://bulma.io/images/placeholders/96x96.png"
                     alt="profilepicture"
                   />
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4" id="username-home">Username</p>
+                <p class="title is-4 username" id="username-home"></p>
               </div>
             </div>
 
@@ -316,6 +270,7 @@
   });
 };
     </script>
-<script src="js/workoutsUI.js" defer></script>
-  </body>
+    <script src="js/allWorkouts.js" defer></script>
+    <script src="js/updateUserInfo.js" defer></script>
+    </body>
 </html>

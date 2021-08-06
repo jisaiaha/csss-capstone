@@ -11,7 +11,6 @@ window.onload = event => {
  
      googleUserId = user.uid;
      uniqueUID = user.uid;
-     username.innerHTML = user.displayName;
 
      getWorkouts(googleUserId);
    } else {
@@ -21,6 +20,8 @@ window.onload = event => {
  
 const getWorkouts = userId => {
  const workoutsRef = firebase.database().ref(`workouts/users/${userId}`);
+ console.log("firebase.database().ref(`workouts/users/"+userId)
+
  //refreshes
  workoutsRef.on("value", snapshot => {
    const data = snapshot.val();
@@ -69,36 +70,36 @@ const createCard = (workout, workoutId) => {
      liftCards += `<div class="content">
                           <div class="columns">
                             <div class="column">
-                              <p class="title is-4">${liftObj.name}</p>
+                              <p class="title is-centered is-4">${liftObj.name}</p>
                             </div>
                             <div class="column">
                               <p class="subtitle is-6">
-                                ${liftObj.reps}
+                                ${liftObj.sets} sets
                               </p>
                               <p class="subtitle is-6">
-                                ${liftObj.sets}
+                                ${liftObj.reps} repetitions per set
                               </p>
                               <p class="subtitle is-6">
-                                ${liftObj.weight}
+                                ${liftObj.weight} pounds per repetition
                               </p>
                             </div>
                           </div>
                         </div>`
  }
  return `<!-- view workouts Card template -->
-                <div class="card">
+                <div class="card mt-5">
                   <div class="card-content">
-                    <p class="title is-3">${workout.title}</p>
+                    <p class="title is-3 has-text-centered is-underlined has-text-weight-bold">${workout.title}</p>
                     <!-- Lifts card template -->
-                    <div class="card">
+                    <div class="card mt">
                       <div class="card-content">
                         ${liftCards}
                       </div>
                     </div>
-                    <div class="content">
+                    <div class="content mt-5">
                       <div class="columns">
                         <div class="column">
-                          <p class="subtitle is-5">${workout.date}</p>
+                          <p class="subtitle is-5 has-text-centered">Workout from ${workout.date}</p>
                         </div>
                         <div class="column">
                           <button
