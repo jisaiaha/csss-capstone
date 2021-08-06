@@ -1,5 +1,5 @@
 const username = document.getElementById("username-home");
- 
+let uniqueUID;
 window.onload = event => {
    console.log("viewWorkouts running")
  
@@ -10,6 +10,7 @@ window.onload = event => {
      console.log("Logged in as: " + user.displayName);
  
      googleUserId = user.uid;
+     uniqueUID = user.uid;
      username.innerHTML = user.displayName;
 
      getWorkouts(googleUserId);
@@ -46,10 +47,10 @@ const deleteWorkout = workoutId => {
  modal.classList.add("is-active"); //show modal
  deleteConfirm.addEventListener("click", e => {
    //deleted
-   firebase
-     .database()
-     .ref(`users/${googleUserId}/${workoutId}`)
-     .remove();
+    firebase
+      .database()
+      .ref(`workouts/users/${uniqueUID}/${workoutId}`)
+      .remove();
    modal.classList.remove("is-active"); //hide modal
  });
  cancelDeletion.addEventListener("click", e => {
@@ -113,17 +114,3 @@ const createCard = (workout, workoutId) => {
                   </div>
                   <!--  -->`;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
