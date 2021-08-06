@@ -21,6 +21,7 @@
 
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="css/info.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
@@ -53,9 +54,9 @@
               <li><a href="home.html" >Home</a></li>
               <li><a href="music.html">Music</a></li>
               <li><a href="profile.html">You</a></li>
-              <li><a href="info.html">Friends</a></li>
+                <li><a class="is-active" href="info.html">Info</a></li>
+            <li><a href="index.html">Sign Out</a></li>
               <hr>
-              <li class="is-active"><a class="is-active" href="profile.html">Profile</a></li>
             </ul>
           </div>
           </aside>
@@ -190,16 +191,17 @@
               <div class="media-left">
                 <figure class="image is-60x60">
                   <img
+                  id="profile-pic"
                     src="https://bulma.io/images/placeholders/96x96.png"
                     alt="Placeholder image"
                   />
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">Username</p>
+                <p class="title is-4" id='username-home'>Username</p>
               </div>
             </div>
-
+            
             <div class="content">
               <p>
                 Total Activites:
@@ -231,5 +233,6 @@
       </div>
     </div>
     <script src="js/signIn.js"></script>
+    <script src="js/updateUserInfo.js" defer></script>
   </body>
 </html>
