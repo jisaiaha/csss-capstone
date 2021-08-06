@@ -7,15 +7,17 @@ const signIn = () => {
     var credential = result.credential;
     var token = credential.accessToken;
 
-    // The signed-in user info.
-    var user = result.user;
-    //window.location = 'info.html'; 
-    //Sign-In sending location
-    if(document.cookie.includes('landingPage')) {
+    //The signed-in user info.
+    //try document.cookie = true {}
+    if(!document.cookie.includes('landingPage')) {
         window.location.href = "home.html";
         console.log(document.cookie)
+        console.log("Cookie Exists")
    } else {
         window.location.href = 'info.html'; 
+        console.log("Cookie Never Existed")
+        document.cookie = "landingPage=visited; expires=Fri, 31 Dec 9999 23:59:59 GMT"; 
+        console.log(document.cookie);
    }
     
   }).catch((error) => {
@@ -36,13 +38,14 @@ const signIn = () => {
   });
 }
 
-const LogOut = () => {
-  firebase.auth()
-  .signOut()
-  .then(() => {
-    window.location.href = "index.html"
-    console.log("Logged Out")
-  }).catch((error) => {
-    // An error happened.
-  });
-}
+// const LogOut = () => {
+// let firebase = new firebase;
+//   firebase.auth()
+//   .signOut()
+//   .then(() => {
+//     window.location.href = "index.html"
+//     console.log("Logged Out")
+//   }).catch((error) => {
+//     // An error happened.
+//   });
+// }
