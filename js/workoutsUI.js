@@ -1,5 +1,7 @@
 const username = document.getElementById("username-home");
 let uniqueUID;
+let googleUser;
+
 window.onload = event => {
    console.log("viewWorkouts running")
  
@@ -8,12 +10,13 @@ window.onload = event => {
    if (user) {
      // Console log the user to confirm they are logged in
      console.log("Logged in as: " + user.displayName);
- 
+    googleUser = user;
      googleUserId = user.uid;
      uniqueUID = user.uid;
 
      getWorkouts(googleUserId);
    } else {
+        window.location="index.html"
    }
  });
 };

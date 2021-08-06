@@ -6,7 +6,7 @@ let userHeightFeet;
 let userWeight;
 let userBio;
 
-const nameInput = document.querySelector('#name-input');
+const theNameInput = document.querySelector('#name-input');
 const emailInput = document.querySelector('#email-input');
 const heightInchesInput = document.querySelector('#height-feet');
 const heightFeetInput = document.querySelector('#height-inches');
@@ -33,7 +33,7 @@ window.onload = (event) => {
 };
 
 const fillGoogleInfo = () => {
-    nameInput.value = googleDisplayName;
+    theNameInput.value = googleDisplayName;
     emailInput.value = googleEmailAddress;
 
 };

@@ -22,7 +22,7 @@
 		<link rel="stylesheet" href="css/info.css" />
 		<link rel="stylesheet" href="css/styles.css" />
 		<script src="js/signIn.js" defer></script>
-		<script defer src="/__/firebase/8.3.1/firebase.js"></script>
+        <script defer src="/__/firebase/8.3.1/firebase.js"></script>
 		<!-- include only the Firebase features as you need -->
 		<script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
 		<script defer src="/__/firebase/init.js?useEmulator=true"></script>
@@ -260,8 +260,6 @@
 			<!--       <div class="column is-one-fifth" id="column-right">
 				</div> -->
 		</div>
-		<script defer src="js/profile.js"></script>
-		<script defer src="js/workoutUI.js"></script>
 		<!--JS for hiding and showing modal -->
 		<script>
 			const hide0 = document.getElementById("close-modal0");
@@ -284,20 +282,12 @@
 			const showModal = element => {
 			  element.classList.add("is-active");
 			};
-			// Feel free to comment out if there's bugs
-			window.onload = (event) => {
-			// Use this to retain user state between html pages.
-			firebase.auth().onAuthStateChanged(function(user) {
-			if (user) {
-			console.log('Logged in as: ' + user.displayName);
-			googleUserId = user.uid;
-			} else {
-			};
-			});
-			};
 			
-		</script>
-		<script defer src="js/workoutsUI.js"></script>
-		<script src="js/updateUserInfo.js" defer></script>
+			
+        </script>
+        <script src="js/profile.js"></script>
+		<script src="js/workoutsUI.js"></script>
+        <script src="js/updateUserInfo.js" defer></script>
+        
 	</body>
 </html>
