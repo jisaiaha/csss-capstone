@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Workout App</title>
+    <title>Workout App</title>
     <meta
       name="description"
       content="A simple website, built with Glitch. Remix it to get your own."
@@ -27,8 +27,6 @@
       href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
     />
     <script src="js/signIn.js" defer></script>
-    <script> document.cookie = "landingPage=visited; expires=Fri, 31 Dec 9999 23:59:59 GMT"; 
-    console.log(document.cookie); </script>
   </head>
   <body>
     <div class="columns">
@@ -46,24 +44,29 @@
             </p>
           </a>
           <ul class="menu-list vertical-center-nav has-text-centered">
-            <li><a href="home.html" class="is-active">Home</a></li>
+            <li><a href="home.html">Home</a></li> <!-- class="is-active" -->
             <li><a href="music.html">Music</a></li>
             <li><a href="profile.html">You</a></li>
             <li><a href="friends.html">Friends</a></li>
+            <li><a href="index.html">Sign Out</a></li>
           </ul>
         </aside>
       </div>
-
+      
+<!-- new modal starts here -->
       <div class="column" id="column-middle">
         <section class="hero">
           <div class="hero-body">
             <p class="title">
               Home
             </p>
+            <a class="button is-block is-fullwidth is-white is-medium is-rounded" id="open-modals" onclick="submitMessage()">
+              <strong class="is-primary">Add Post</strong>
+            </a>
           </div>
         </section>
         <div id="posts">
-          <!--INSERT POSTS HERE -->
+
           <div class="card my-5">
             <div class="card-content">
               <div class="media">
@@ -96,42 +99,156 @@
               </div>
             </div>
           </div>
+          
 
-          <div class="card my-5">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    <img
-                      src="https://bulma.io/images/placeholders/96x96.png"
-                      alt="Placeholder image"
-                    />
-                  </figure>
+        <!--Modal Template -->
+        <div class="modal" id="modals">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Add Post</p>
+              <button
+                class="delete"
+                aria-label="close"
+                id="closed-modal1"
+              ></button>
+            </header>
+            <section class="modal-card-body">
+              
+              <!--Workout Modal List-->
+              <div id="user-workouts">
+                <!--Card template -->
+                <div class="card" id="workout-#">
+                  <div class="card-content">
+                    <div class="content">
+                      <div class="columns">
+                        <div class="column" id="workout-#-image">
+                          <figure class="image is-48x48">
+                            <img
+                              src="https://bulma.io/images/placeholders/128x128.png"
+                            />
+                          </figure>
+                        </div>
+                        <div class="column">
+                          <p class="title is-4" id="workout-#-name">Name</p>
+                        </div>
+                        <div class="column">
+                          <p id="charNum">0 characters</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="media-content">
-                  <p class="title is-4">John Smith</p>
-                  <p class="subtitle is-6">@johnsmith</p>
+                
+              <!-- Content ... -->
+              <br>
+              <div class="field">
+                <label class="label">What's New?</label>
+                <div class="control">
+                  <input class="input" type="text" onkeyup="countChars(this);" placeholder="Add Text" />
                 </div>
               </div>
-
-              <div class="content">
-                <div class="card-image" style="padding: 0;">
-                  <figure class="image">
-                    <img
-                      src="https://media.istockphoto.com/videos/man-trail-running-on-mountain-the-dolomites-video-id1198457407?s=640x640"
-                      alt="Placeholder image"
-                    />
-                  </figure>
-                </div>
-                Just ran 4 miles! <a href="#">#hiking</a>
-                <br />
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                
+                <!--                  -->
               </div>
-            </div>
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success">Save Changes</button>
+              <button class="button" id="closed-modal0">Cancel</button>
+            </footer>
           </div>
         </div>
       </div>
+      </div>
+<!--JS for hiding and showing modal -->
+      <script>
+        
+        const hidden0 = document.getElementById("closed-modal0");
+        const hidden1 = document.getElementById("closed-modal1");
+        //const hidden2 = document.getElementById("closed-modal2");
+        
+        const openmodal = document.getElementById("open-modals");
+        const modals = document.getElementById("modals");
+        console.log(modals)
+        const modalview = document.getElementById("modal-view");
+        
+        hidden0.addEventListener("click", e => {
+          deleteModal(modals);
+        });
+        hidden1.addEventListener("click", e => {
+          deleteModal(modals);
+        });
+        openmodal.addEventListener("click", e => {
+          showModal(modals);
+        });
+        const deleteModal = (element) => {
+          element.classList.remove("is-active");
+        }
+        const showModal = (element) => {
+          element.classList.add("is-active");
+        }
+      </script>
+      
+      <!-- Count Characters -->
+              <script> 
+                function countChars(obj){
+                    document.getElementById("charNum").innerHTML = obj.value.length+' characters';
+                }
+              </script>
+              
+<!-- code cut here -->
+<!--       <div class="column" id="column-middle">
+        <section class="hero">
+          <div class="hero-body">
+            <p class="title">
+              Home
+            </p>
+            <a class="button is-white is-medium is-rounded" onclick="submitMessage()">
+              <strong class="is-primary">Add Post</strong>
+            </a>
+          </div>
+        </section>
+        <div id="posts"> -->
+          
+    
+          <!--INSERT POSTS HERE -->
+          <!-- the actual card and contents for user -->
+<!--           <div class="card my-5">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img
+                      src="https://bulma.io/images/placeholders/96x96.png"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">John Smith</p>
+                  <p class="subtitle is-6">@johnsmith</p>
+                </div>
+              </div>
 
+              <div class="content">
+                <div class="card-image" style="padding: 0;">
+                  <figure class="image">
+                    <img
+                      src="https://media.istockphoto.com/videos/man-trail-running-on-mountain-the-dolomites-video-id1198457407?s=640x640"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                Just ran 4 miles! <a href="#">#hiking</a>
+                <br />
+                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              </div>
+            </div>
+          </div> -->
+<!--         </div>
+      </div> -->
+      
+<!-- right column username stuff -->
       <div class="column is-one-fifth" id="column-right">
         <div class="card my-5">
           <div class="card-content">
@@ -150,11 +267,11 @@
             </div>
 
             <div class="content">
-              <p>
+              <p id="total-activities">
                 Total Activites:
               </p>
               <p>
-                Member since:
+                Member Since: August 2021
               </p>
             </div>
           </div>
