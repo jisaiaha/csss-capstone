@@ -1,4 +1,4 @@
-const username = document.getElementById("username-profile");
+const username = document.getElementById("username-home");
  
 window.onload = event => {
    console.log("viewWorkouts running")
@@ -36,7 +36,26 @@ const renderDataAsHtml = data => {
    cards += createCard(workout, workoutItem);
  }
  
-document.querySelector("#panel-2").innerHTML = cards;
+document.querySelector("#posts").innerHTML = cards;
+};
+ 
+const deleteWorkout = workoutId => {
+ const modal = document.getElementById("alert-modal");
+ const cancelDeletion = document.getElementById("alert-cancel");
+ const deleteConfirm = document.getElementById("alert-confirm");
+ modal.classList.add("is-active"); //show modal
+ deleteConfirm.addEventListener("click", e => {
+   //deleted
+   firebase
+     .database()
+     .ref(`users/${googleUserId}/${workoutId}`)
+     .remove();
+   modal.classList.remove("is-active"); //hide modal
+ });
+ cancelDeletion.addEventListener("click", e => {
+   //cancel
+   modal.classList.remove("is-active");
+ });
 };
 
 let numOfCards = 0;
@@ -83,8 +102,8 @@ const createCard = (workout, workoutId) => {
                         <div class="column">
                           <button
                             class="button is-danger is-large"
-                            id=""
-                            onclick=""
+                            id="${workoutId}"
+                            onclick="deleteWorkout(this.id)"
                           >
                             Delete workout
                           </button>
