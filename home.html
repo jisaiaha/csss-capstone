@@ -70,7 +70,7 @@
                 <div class="media-left">
                   <figure class="image is-48x48">
                     <img
-                      src="https://bulma.io/images/placeholders/96x96.png"
+                      src="https://cdn106.picsart.com/202719027000201.jpg?type=webp&to=crop&r=256"
                       alt="Placeholder image"
                     />
                   </figure>
@@ -103,14 +103,14 @@
                 <div class="media-left">
                   <figure class="image is-48x48">
                     <img
-                      src="https://bulma.io/images/placeholders/96x96.png"
+                      src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vdGJhbGwlMjBwbGF5ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
                       alt="Placeholder image"
                     />
                   </figure>
                 </div>
                 <div class="media-content">
-                  <p class="title is-4">John Smith</p>
-                  <p class="subtitle is-6">@johnsmith</p>
+                  <p class="title is-4">Sara Brown</p>
+                  <p class="subtitle is-6">@sara_brown</p>
                 </div>
               </div>
 
@@ -118,12 +118,12 @@
                 <div class="card-image" style="padding: 0;">
                   <figure class="image">
                     <img
-                      src="https://media.istockphoto.com/videos/man-trail-running-on-mountain-the-dolomites-video-id1198457407?s=640x640"
+                      src="https://www.keckmedicine.org/wp-content/uploads/2019/09/Teenage-girl-playing-soccer-1.jpg"
                       alt="Placeholder image"
                     />
                   </figure>
                 </div>
-                Just ran 4 miles! <a href="#">#hiking</a>
+                Training for my next soccer game! <a href="#">#soccer</a><a href="#">#practicemakesperfect</a>
                 <br />
                 <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
               </div>
@@ -140,12 +140,12 @@
                 <figure class="image is-60x60">
                   <img
                     src="https://bulma.io/images/placeholders/96x96.png"
-                    alt="Placeholder image"
+                    alt="profilepicture"
                   />
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">Username</p>
+                <p class="title is-4" id="username-home">Username</p>
               </div>
             </div>
 
@@ -179,11 +179,26 @@
         </div>
       </div>
     </div>
+
     <script defer src="/__/firebase/8.3.1/firebase.js"></script>
    <!-- include only the Firebase features as you need -->
    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
    <script defer src="/__/firebase/8.8.0/firebase-auth.js"></script>
     <script src="js/viewWorkouts.js"></script>
+        <script>
+            // Feel free to comment out if there's bugs
+    window.onload = (event) => {
+  // Use this to retain user state between html pages.
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('Logged in as: ' + user.displayName);
+      googleUserId = user.uid;
+      document.getElementById("username-home").innerHTML = user.displayName;
+    } else {
+    };
+  });
+};
+    </script>
   </body>
 </html>

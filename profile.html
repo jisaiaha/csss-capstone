@@ -297,7 +297,14 @@
           </div>
         </div>
       </div>
-      <!--JS for hiding and showing modal -->
+
+      <!--       <div class="column is-one-fifth" id="column-right">
+      </div> -->
+    </div>
+    <script defer src="js/profile.js"></script>
+    <script defer src="js/workoutSubmit.js"></script>
+
+          <!--JS for hiding and showing modal -->
       <script>
         const hide0 = document.getElementById("close-modal0");
         const hide1 = document.getElementById("close-modal1");
@@ -319,12 +326,19 @@
         const showModal = element => {
           element.classList.add("is-active");
         };
-      </script>
+ // Feel free to comment out if there's bugs
+    window.onload = (event) => {
+  // Use this to retain user state between html pages.
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('Logged in as: ' + user.displayName);
+      googleUserId = user.uid;
+      document.getElementById("username-profile").innerHTML = user.displayName;
+    } else {
+    };
+  });
+};
 
-      <!--       <div class="column is-one-fifth" id="column-right">
-      </div> -->
-    </div>
-    <script defer src="js/profile.js"></script>
-    <script defer src="js/workoutSubmit.js"></script>
+      </script>
   </body>
 </html>
